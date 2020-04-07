@@ -14,8 +14,7 @@ script:
 jobs:
   include:
     - script:
-      - echo $FOO
-      - echo $BAZ
+      - echo $FOO $BAZ
       - gem --version
     - stage: deploy
       script:
