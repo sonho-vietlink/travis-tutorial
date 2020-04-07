@@ -6,7 +6,10 @@ env:
   - FOO=foo BAZ=123
   - FOO=bar BAZ=456
 
-script: echo $FOO
+script: 
+  - echo $FOO
+  - echo $BAZ
+  - gem --version
 
 jobs:
   include:
