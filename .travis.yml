@@ -3,15 +3,21 @@ rvm:
   - 2.3
 
 env:
-  - FOO=foo
-  - FOO=bar
+  - FOO=foo BAZ=123
+  - FOO=bar BAZ=456
 
 script: echo $FOO
 
 jobs:
   include:
+    - script:
+      - echo $FOO
+      - echo $BAZ
+      - gem --version
     - stage: deploy
-      script: echo Deploy
+      script:
+        - echo Deploy
+        - gem --version
       # Keep in mind to overwrite these here
       rvm: 2.3
       env: FOO=foo
