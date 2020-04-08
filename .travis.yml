@@ -1,25 +1,21 @@
-rvm:
-  - 2.2
-  - 2.3
-
+language: python 
+python:
+  - "3.7"
 env:
-  - FOO=foo BAZ=123
-  - FOO=bar BAZ=456
-
+  - BAZ=10
 script: 
-  - echo $FOO
-  - echo $BAZ
-  - gem --version
+  - echo $ENV
 
 jobs:
   include:
     - script:
-      - echo $FOO $BAZ
-      - gem --version
+      - echo $ENV
+      - python --version
     - stage: deploy
       script:
         - echo Deploy
-        - gem --version
+        - python --version
+        - echo $ENV
       # Keep in mind to overwrite these here
-      rvm: 2.3
+      python: 2.7
       env: FOO=foo
