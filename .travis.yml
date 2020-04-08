@@ -3,8 +3,6 @@ python:
   - 3.7
 cache:
   pip: true
-install:
-  - pip install -r requirements.txt
 _ahjhj: &shared_jobs
   script: echo "shared script config"
 jobs:
