@@ -1,21 +1,21 @@
-language: python 
-python:
-  - "3.7"
-env:
-  - BAZ=10
-script: 
-  - echo $ENV
+dist: xenial
+language: php
+php:
+  - '5.6'
 
 jobs:
   include:
-    - script:
-      - echo $ENV
-      - python --version
-    - stage: deploy
+    - language: python
+      python: 3.8
       script:
-        - echo Deploy
-        - python --version
-        - echo $ENV
-      # Keep in mind to overwrite these here
-      python: 2.7
-      env: FOO=foo
+      - python -c "print('Hi from Python!')"
+
+    - language: node_js
+      node_js: 12
+      script:
+      - node -e "console.log('Hi from NodeJS!')"
+
+    - language: java
+      jdk: openjdk8
+      script:
+      - javac -help
