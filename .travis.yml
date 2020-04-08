@@ -1,29 +1,15 @@
-dist: xenial
-language: php
-php:
-  - '5.6'
-script:
-  - php --version
-env:
-  - bar=10
-  - bar=20
-
+language: python
+python:
+  - 3.7
+cache:
+  pip: true
+install:
+  - pip install -r requirements.txt
+_ahjhj: &shared_jobs
+  script: echo "shared script config"
 jobs:
   include:
-    - language: python
-      python: 3.8
-      script:
-      - python -c "print('Hi from Python!')"
-      - echo $bar
-
-    - language: node_js
-      node_js: 12
-      script:
-      - node -e "console.log('Hi from NodeJS!')"
-      - echo $bar
-
-    - language: java
-      jdk: openjdk8
-      script:
-      - javac -help
-      - echo $bar
+  - name: Job 1
+    <<: *shared_jobs
+  - name: Job 2
+    <<: *shared_jobs
