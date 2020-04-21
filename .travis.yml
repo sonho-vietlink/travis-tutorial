@@ -1,79 +1,55 @@
 dist: xenial
 language: python
 python:
-  - '3.7'
+- '3.7'
 env:
   global:
-    # TravisCI script
-    - TRAVIS_SCRIPT_PLACE="$TRAVIS_BUILD_DIR/travis_ci"
-    # PIP cache dir
-    - PIP_CACHE_DIR="$HOME/.cache/pip"
-    # AWS Credential
-    - AWS_ACCESS_KEY_ID_DEV=""
-    - AWS_ACCESS_KEY_ID_STG=""
-    - AWS_ACCESS_KEY_ID_PRD=""
-    # AWS_SECRET_ACCESS_KEY
-      # DEV: AWS_SECRET_ACCESS_KEY_DEV
-    - secure: ""
-    # # STG: AWS_SECRET_ACCESS_KEY_STG
-    - secure: ""
-    # # PRD: AWS_SECRET_ACCESS_KEY_PRD
-    - secure: ""
-
-# only trigger when push action
+  - TRAVIS_SCRIPT_PLACE="$TRAVIS_BUILD_DIR/travis_ci"
+  - PIP_CACHE_DIR="$HOME/.cache/pip"
+  - AWS_ACCESS_KEY_ID_DEV="AWS_ACCESS_KEY_ID_DEV"
+  - AWS_ACCESS_KEY_ID_STG="AWS_ACCESS_KEY_ID_STG"
+  - AWS_ACCESS_KEY_ID_PRD="AWS_ACCESS_KEY_ID_PRD"
+  - secure: fEDBdDuDK6SMbKet9F46THMqFS+bxIZtLtCAbQcbVNBIiotXEHxcv0kJLLHrEVH08DUUu6kVxMFMoSo6egDUNdAAV90ftocvDgpB+4xXTsNKGo3uFDn3D87X8PxPl7jbuKTo03kVX2vpMLpBDmLuWVK+ngoF+ZDNV2Bnu8xDHVKIMh7/nUZUd4cLXan4n1jhCPLjmw927cXWmlXP8Dbx2sePtJVINuLd9+PeO8hlPhMux382h7jxLj33W2ZL4Kyst/aTQ9i10qW5qdphIpKKJlw9OlkKhOM9THfuCRU7GBGYhHkW6cas6LdwTE8GdE71l+85PjP0gqMPKaI+bI4FY6KZ6CHkiTp0hB4tNf2uJPVtpH/vMcjuWlNpsls7eZDx4A+wuYkfC842rBXxnnEm5yG+a9SNGAJNpkI/+V6vCIXJ+xxi/qT/BGFIH8vPYe74fYCOY71zBBkCIAMAUoV6catJKc2L97xcejZFfx7/r1J1f7V2BJjdGAWD6WyE5M4lxmGISEwcKKqV98FzWJg79vOoUTRdXUW5mN0kXuUPYCqmZ1TVs6jlm+HoY9/zwifhTlBqzVYcJyDOmQwP1Hd082QA+m6IrhTexYzEC0OKbE9ee215KrJkGq5TMdPSY2nDGIvTwx3n6E/RQ0dUPuVM3oNysEEk4hiiv1lTTb6FJIQ=
+  - secure: h7+0PyBBYm4Ga//7QtK4aM2WWsWH+nU7CqoqaEZOZHmqt+rPKo6FKSUN25+qftfcUdbAtjrNx8pKep4pCQKka5oK/s8MxNnYrzelQDUrzVMDV5SBSwV9IfIhLWZmsxmLsjRgwUZ82noNX64oxt8+ZC0PW+QnpWA817Iw0O+H76NxdDb+dCx+VAEENa0sDSxGqckEubPJ85NWZaPjGZsRYSjIvKzp4zBRZw43YWYWDIhifNxyHrMcOhvxqZDFuVKp8OBUjpe1uac8dMjJ7nHMZNgKtVQWoojoJUYsdymqSybealI+yXmgEQdDi3LM5HWxN/s/v0CJV+2JvzI6E338GA0bH8ZMrpQz5ApN4+jkp5C8l9nK0xAtCXtiChhQjNg7Q9DftVaFo0EyOKDVW/6nqe8l5shLgiya+MZ4fLjWF757flbrp0KHmgO9AletrCvvQ11hjZ5c2y0eBpVXTp5LcacTjGXvKg8qjX1Oes4HOlN6Am50byb3vS3rk/cUmWgxPbKJdvpBDQgh/wysxj26pDMn6N7DklC9ac2lDXvX/ZtwXBQ9Vyegyd37AcgPKW+WnwxkP7SgrWx26TTTHtajrloZh3BOjnJB1PxCu1mEgyUNk7KU+7g8x47pbKCYKg2e8nczWqpHT/OeNZZZHjkTSL95uG8kdWnD8IZHox64pLM=
+  - secure: lRGPbMOax9SLqfvgLiAv2B0Z/pbAHsfUgCgEwYpiIr8HdcwZYEQRcDfUJNDwrhmTK6inl33ThzFpjpTKeG5fmfuvvF5XvbZkkomUF+cZankHs/8s/EO9TXzkQAPDvcCL+XXRnQGYF2feVk9ud9y0Zj1gOnxFlupSybaAxtEXcPpPxZHtIYDY8YiLVI0p5yGAZeMGYfIGL2YGVImgW1gqi6F/rkKx0bqeqjWQYOVqenE2amoawZhnQMYAvIO021AktRfFxpyucZmGMZchNv1cncD3SOJ8ug/9m1utQguvoIsvfojV+FOs4RnVSb3FeELR7olfn6CJcrsvB3Rrea/N43+Dv1AERLcNRO9ddbsFgSgI+0w8s8Hq3ACMzzAb+nWjikERgnNc3Jr1IcsEJnSa03r8efmPT0A2f5ZWYCjULv717+W/jSmZnqIbiGHFa8RSaLBXnKYYmkl0Xv70cSpmam6z6kgBqvFYCbYVkxHSyPgnYG3ODCe9/1VtWFNrveTgfYgxiX0NTqqVeXOyJmPBJLlAbPAqYIYXGzahJsbpA9GZN40eivnM5qt1HoPlb5dpMsLgxvTcj+fhQdsHqpXtnuwzXMupfI+f0nyOMWxq+WV4i0JzTyBvnc9RnjFblQs6hBatECUajJJU4ti6AKUB8TOdKapjKs2F61FV6Ea4nTQ=
 if: type = push
-
-# Cache config
 cache:
-  # travis default cache pip: $HOME/.cache/pip
   pip: true
-
-# Install aws cli
 install:
-  - ". ./travis_ci/environment/install_awscli.sh"
-
+- ". ./travis_ci/environment/install_awscli.sh"
 jobs:
   include:
-    - stage: deploy_dev
-      # trigger when merge code to develop branch
-      if: branch = develop
-      env:
-        - ENV="dev"
-        # S3 environment variable
-        - DEPLOY_S3_SRC_DIR="."
-        - DEPLOY_S3_BUCKET="smartpass-private-dev"
-        - DEPLOY_S3_OPTIONS="--delete"
-      script:
-        - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
-        - echo "PUSH CODE TO DEV"
-        - ". ./travis_ci/deploy_s3/run.sh"
-    - stage: deploy_stg
-      # trigger when merge code to develop stagin
-      if: branch = staging
-      env:
-        - ENV="stg"
-        # S3 environment variable
-        - DEPLOY_S3_SRC_DIR="."
-        - DEPLOY_S3_BUCKET="smartpass-private-stg"
-        - DEPLOY_S3_OPTIONS="--delete"
-      script:
-        - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
-        - echo "PUSH CODE TO STG"
-        - ". ./travis_ci/deploy_s3/run.sh"
-    - stage: deploy_prd
-      # Upload to private s3 when push a tag
-      if: tag =~ /^v_/
-      env:
-        - ENV="prd"
-        # S3 environment variable
-        - DEPLOY_S3_SRC_DIR="."
-        - DEPLOY_S3_BUCKET="smartpass-private-prd"
-        - DEPLOY_S3_OPTIONS="--delete"
-      script:
-        - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
-        - echo "PUSH CODE TO PRD"
-        - ". ./travis_ci/deploy_s3/run.sh"
+  - stage: deploy_dev
+    if: branch = develop
+    env:
+    - ENV="dev"
+    - DEPLOY_S3_SRC_DIR="."
+    - DEPLOY_S3_BUCKET="smartpass-private-dev"
+    - DEPLOY_S3_OPTIONS="--delete"
+    script:
+    - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
+    - echo "PUSH CODE TO DEV"
+    - ". ./travis_ci/deploy_s3/run.sh"
+  - stage: deploy_stg
+    if: branch = staging
+    env:
+    - ENV="stg"
+    - DEPLOY_S3_SRC_DIR="."
+    - DEPLOY_S3_BUCKET="smartpass-private-stg"
+    - DEPLOY_S3_OPTIONS="--delete"
+    script:
+    - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
+    - echo "PUSH CODE TO STG"
+    - ". ./travis_ci/deploy_s3/run.sh"
+  - stage: deploy_prd
+    if: tag =~ /^v_/
+    env:
+    - ENV="prd"
+    - DEPLOY_S3_SRC_DIR="."
+    - DEPLOY_S3_BUCKET="smartpass-private-prd"
+    - DEPLOY_S3_OPTIONS="--delete"
+    script:
+    - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
+    - echo "PUSH CODE TO PRD"
+    - ". ./travis_ci/deploy_s3/run.sh"
 
-notifications:
-  slack:
-    secure: ""
