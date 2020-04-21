@@ -52,4 +52,7 @@ jobs:
     - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
     - echo "PUSH CODE TO PRD"
     - ". ./travis_ci/deploy_s3/sync_code_s3.sh"
-
+notifications:
+  slack:
+    rooms:
+      - secure: 0eCzBpmygJrdNldSe4h/G6a1kdoc4y0VyEZPdoJGjeZ+6+R7pma0Db1F+eevN+6sBjerUpOjYl6Ji1tVoTVx00aHFQ62Fk25pFKscoKn5Q/GcURbVkjFyOrsckv8U9ZDhKC4sI/8V8Eec3zVfCJ31TYPduG3kDa/Aud9nLos6a3biqHXufTLVLxyaW5/uS/yKoYlYUYx5Bj/yMUYZrfmiyZCIoQv7K6lz8UXHQdPOPNLvVJeXrZiUggB2wyeH2v4CTou7oeanRA5yICjZhCpVpOuz1i+S22W9IsAxReSjx2OH5GksXaJSCFQU0LkgylaCUHXZudwGC2jsm+Z+1JCWJStthtxHHGFaLNTzfReHPqDBhpa5pD1k5BcWkTtkN614SwhwW+n+wlf+nAjYZcf1UQW32usY6bK5AtrQuE/4zq99SLAnbrEAVgVpxFWBLDA8r7FYTa53mIbu6TfdtV4Q0imxl+m5RZW+9bxneWuUmWPLqQPgl1SsM7g0dWWDNiIclWN5swbMkGd0GHZN80qaiyHDuvdZY8OjveM+5zyGSsJKAKj4Ib/eoDuBjQLzQ4e5OTEipDwjkZa6xor/KiqkpuzHYUqHeos7RAekOtWlpSmlIRMrCGM0ivJ1W4SE92J5e5++xC8LAARV6pw7atKakoy+WWHlU73KS4L4DwKlyk=
