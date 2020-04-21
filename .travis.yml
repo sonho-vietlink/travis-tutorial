@@ -46,7 +46,7 @@ jobs:
       script:
         - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
         - echo "PUSH CODE TO DEV"
-        # - ". ./travis_ci/deploy_s3/run.sh"
+        - ". ./travis_ci/deploy_s3/run.sh"
     - stage: deploy_stg
       # trigger when merge code to develop stagin
       if: branch = staging
@@ -59,7 +59,7 @@ jobs:
       script:
         - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
         - echo "PUSH CODE TO STG"
-        # - ". ./travis_ci/deploy_s3/run.sh"
+        - ". ./travis_ci/deploy_s3/run.sh"
     - stage: deploy_prd
       # Upload to private s3 when push a tag
       if: tag =~ /^v_/
@@ -72,7 +72,7 @@ jobs:
       script:
         - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
         - echo "PUSH CODE TO PRD"
-        # - ". ./travis_ci/deploy_s3/run.sh"
+        - ". ./travis_ci/deploy_s3/run.sh"
 
 notifications:
   slack:
