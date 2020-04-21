@@ -29,7 +29,7 @@ jobs:
     script:
     - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
     - echo "PUSH CODE TO DEV"
-    - ". ./travis_ci/deploy_s3/run.sh"
+    - ". ./travis_ci/deploy_s3/sync_code_s3.sh"
   - stage: deploy_stg
     if: branch = staging
     env:
@@ -40,7 +40,7 @@ jobs:
     script:
     - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
     - echo "PUSH CODE TO STG"
-    - ". ./travis_ci/deploy_s3/run.sh"
+    - ". ./travis_ci/deploy_s3/sync_code_s3.sh"
   - stage: deploy_prd
     if: tag =~ /^v_/
     env:
@@ -51,5 +51,5 @@ jobs:
     script:
     - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
     - echo "PUSH CODE TO PRD"
-    - ". ./travis_ci/deploy_s3/run.sh"
+    - ". ./travis_ci/deploy_s3/sync_code_s3.sh"
 
