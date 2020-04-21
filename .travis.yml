@@ -1,13 +1,79 @@
+dist: xenial
 language: python
 python:
-  - 3.7
+  - '3.7'
+env:
+  global:
+    # TravisCI script
+    - TRAVIS_SCRIPT_PLACE="$TRAVIS_BUILD_DIR/travis_ci"
+    # PIP cache dir
+    - PIP_CACHE_DIR="$HOME/.cache/pip"
+    # AWS Credential
+    - AWS_ACCESS_KEY_ID_DEV=""
+    - AWS_ACCESS_KEY_ID_STG=""
+    - AWS_ACCESS_KEY_ID_PRD=""
+    # AWS_SECRET_ACCESS_KEY
+      # DEV: AWS_SECRET_ACCESS_KEY_DEV
+    - secure: ""
+    # # STG: AWS_SECRET_ACCESS_KEY_STG
+    - secure: ""
+    # # PRD: AWS_SECRET_ACCESS_KEY_PRD
+    - secure: ""
+
+# only trigger when push action
+if: type = push
+
+# Cache config
 cache:
+  # travis default cache pip: $HOME/.cache/pip
   pip: true
-_ahjhj: &shared_jobs
-  script: echo "shared script config"
+
+# Install aws cli
+install:
+  - ". ./travis_ci/environment/install_awscli.sh"
+
 jobs:
   include:
-  - name: Job 1
-    <<: *shared_jobs
-  - name: Job 2
-    <<: *shared_jobs
+    - stage: deploy_dev
+      # trigger when merge code to develop branch
+      if: branch = develop
+      env:
+        - ENV="dev"
+        # S3 environment variable
+        - DEPLOY_S3_SRC_DIR="."
+        - DEPLOY_S3_BUCKET="smartpass-private-dev"
+        - DEPLOY_S3_OPTIONS="--delete"
+      script:
+        - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
+        - echo "PUSH CODE TO DEV"
+        # - ". ./travis_ci/deploy_s3/run.sh"
+    - stage: deploy_stg
+      # trigger when merge code to develop stagin
+      if: branch = staging
+      env:
+        - ENV="stg"
+        # S3 environment variable
+        - DEPLOY_S3_SRC_DIR="."
+        - DEPLOY_S3_BUCKET="smartpass-private-stg"
+        - DEPLOY_S3_OPTIONS="--delete"
+      script:
+        - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
+        - echo "PUSH CODE TO STG"
+        # - ". ./travis_ci/deploy_s3/run.sh"
+    - stage: deploy_prd
+      # Upload to private s3 when push a tag
+      if: tag =~ /^v_/
+      env:
+        - ENV="prd"
+        # S3 environment variable
+        - DEPLOY_S3_SRC_DIR="."
+        - DEPLOY_S3_BUCKET="smartpass-private-prd"
+        - DEPLOY_S3_OPTIONS="--delete"
+      script:
+        - echo "DEPLOY CODE TO PRIVATE S3 BUCKET"
+        - echo "PUSH CODE TO PRD"
+        # - ". ./travis_ci/deploy_s3/run.sh"
+
+notifications:
+  slack:
+    secure: ""
