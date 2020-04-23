@@ -43,6 +43,7 @@ jobs:
       skip_cleanup: true
       upload-dir: "dev"
       local-dir: $DEPLOY_S3_SRC_DIR
+      region: ap-southeast-1
       on:
         branch: develop
   - stage: deploy_stg
@@ -63,6 +64,7 @@ jobs:
       skip_cleanup: true
       upload-dir: "stg"
       local-dir: $DEPLOY_S3_SRC_DIR
+      region: ap-southeast-1
       on:
         branch: all
   - stage: deploy_prd
@@ -83,6 +85,7 @@ jobs:
       skip_cleanup: true
       upload-dir: $TRAVIS_TAG
       local-dir: $DEPLOY_S3_SRC_DIR
+      region: ap-southeast-1
       on:
         tags: true
 
