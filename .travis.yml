@@ -44,7 +44,7 @@ jobs:
       upload-dir: $TRAVIS_TAG
       local-dir: $DEPLOY_S3_SRC_DIR
       on:
-        branch: all
+        branch: develop
   - stage: deploy_stg
     if: branch = staging
     env:
