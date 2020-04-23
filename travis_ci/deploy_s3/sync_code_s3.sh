@@ -2,16 +2,18 @@
 
 if [ "$ENV" = "dev" ]; then
     echo "Deploy code to S3 dev"
-    export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_DEV
-    export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_DEV
+    export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID_DEV"
+    export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY_DEV"
+    export S3_BUCKET_DIR_NAME="dev"
 elif [ "$ENV" = "stg" ]; then
     echo "Deploy code to S3 stg"
-    export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_STG
-    export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_STG
+    export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID_STG"
+    export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY_STG"
+    export S3_BUCKET_DIR_NAME="stg"
 elif [ "$ENV" = "prd" ]; then
     echo "Deploy code to S3 prd"
-    export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_PRD
-    export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_PRD
+    export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID_PRD"
+    export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY_PRD"
     S3_BUCKET_DIR_NAME="$(echo $TRAVIS_TAG | cut -d'_' -f2)"
     echo "Private S3 Buckett directory: $S3_BUCKET_DIR_NAME"
 else
