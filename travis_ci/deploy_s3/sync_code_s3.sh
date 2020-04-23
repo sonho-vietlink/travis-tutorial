@@ -36,4 +36,4 @@ echo "aws s3 sync $DEPLOY_S3_SRC_DIR s3://$DEPLOY_S3_BUCKET/$S3_BUCKET_DIR_NAME 
 
 echo $TRAVIS_TAG
 
-# aws s3 ls
+aws s3 ls
