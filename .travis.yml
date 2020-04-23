@@ -21,8 +21,8 @@ env:
 if: type = push
 cache:
   pip: true
-install:
-- ". ./travis_ci/environment/install_awscli.sh"
+# install:
+# - ". ./travis_ci/environment/install_awscli.sh"
 jobs:
   include:
   - stage: deploy_dev
@@ -41,7 +41,7 @@ jobs:
       secret_access_key: $AWS_SECRET_ACCESS_KEY
       bucket: $DEPLOY_S3_BUCKET
       skip_cleanup: true
-      upload-dir: $TRAVIS_TAG
+      upload-dir: "dev"
       local-dir: $DEPLOY_S3_SRC_DIR
       on:
         branch: develop
@@ -61,7 +61,7 @@ jobs:
       secret_access_key: $AWS_SECRET_ACCESS_KEY
       bucket: $DEPLOY_S3_BUCKET
       skip_cleanup: true
-      upload-dir: $TRAVIS_TAG
+      upload-dir: "stg"
       local-dir: $DEPLOY_S3_SRC_DIR
       on:
         branch: all
