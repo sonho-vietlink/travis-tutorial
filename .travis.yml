@@ -42,6 +42,9 @@ jobs:
       bucket: $DEPLOY_S3_BUCKET
       skip_cleanup: true
       upload-dir: $TRAVIS_TAG
+      local-dir: $DEPLOY_S3_SRC_DIR
+      on:
+        branch: all
   - stage: deploy_stg
     if: branch = staging
     env:
@@ -52,6 +55,16 @@ jobs:
     script:
     - echo "DEPLOY CODE TO PRIVATE S3 BUCKET STG"
     - ". ./travis_ci/deploy_s3/sync_code_s3.sh"
+    deploy:
+      provider: s3
+      access_key_id: $AWS_ACCESS_KEY_ID
+      secret_access_key: $AWS_SECRET_ACCESS_KEY
+      bucket: $DEPLOY_S3_BUCKET
+      skip_cleanup: true
+      upload-dir: $TRAVIS_TAG
+      local-dir: $DEPLOY_S3_SRC_DIR
+      on:
+        branch: all
   - stage: deploy_prd
     if: tag =~ /^v_/
     env:
@@ -62,6 +75,16 @@ jobs:
     script:
     - echo "DEPLOY CODE TO PRIVATE S3 BUCKET PRD"
     - ". ./travis_ci/deploy_s3/sync_code_s3.sh"
+    deploy:
+      provider: s3
+      access_key_id: $AWS_ACCESS_KEY_ID
+      secret_access_key: $AWS_SECRET_ACCESS_KEY
+      bucket: $DEPLOY_S3_BUCKET
+      skip_cleanup: true
+      upload-dir: $TRAVIS_TAG
+      local-dir: $DEPLOY_S3_SRC_DIR
+      on:
+        tags: true
 
 notifications:
   slack:
