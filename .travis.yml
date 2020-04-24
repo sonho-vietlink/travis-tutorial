@@ -46,10 +46,7 @@ jobs:
     #   region: ap-southeast-1
     #   on:
     #     branch: develop
-    notifications:
-      slack:
-        # if: branch = develop
-        secure: vdlC68M0W2ZRzsO+wWCYqDb+4HXpvfv1c1aVTw8oPFMknij5rlk/xIe6kPIOlsLlWrnUdpjvjyEoLfi9ajKtWbU3fqn0qj/Ie6fjHYtVfabzG2USrSHGJeTwIOuL3eAvLQzy0C8r4SUrMTOQ/aHCBqbnTmbAzNDOOFGEOjBsEGBSGv+sZbf0D+BfMQeFZEWyz6y+WHLM3Sw0hI62Q3/zHe0kKdDn55JvL55GM6z9E4xG/SArAliMjM+asdo+FNlRxz2/w2nrUjxUOZG4duOyJHHwB2I/Q92YHLcn3gEQYBrCQ9FoQvkebfU9xzauDD5mLhF52YLQLonnECES9UE9AoNJ2A0ESpVfFxiajtl7cE5fVsoAqB5cOc3089G3l8GfrgOYKwV1ri3UVpC1mj+wYhvQP4cuwRGPA+StzBMqK0JDAjV04aBUklq1WwN0njNuhVJJlUkrdskBeqEPQ8cUrmiURumT1uVAM89uhWajjNzrn0VxdmkVHlRqz9hbsLsk/oczzbYO7rn38NXcooX/muR0uhKJVmNALJtIaNkp1MlQcBzXjufLg6Qt7r9dfxpDNlyR9hhM+kkunwc+D9A6SRux/0n397tBYKZkEKWGxEOy0Faw1/UscXBj//6NEzt5bC/dRqxOwMgr5RSYXOgnm/mdgcYFWhOdHgtybTklO+Q=
+    
 
   - stage: deploy_stg
     if: branch = staging
@@ -97,3 +94,7 @@ jobs:
     #   region: ap-southeast-1
     #   on:
     #     tags: true
+notifications:
+  slack:
+    # if: branch = develop
+    secure: vdlC68M0W2ZRzsO+wWCYqDb+4HXpvfv1c1aVTw8oPFMknij5rlk/xIe6kPIOlsLlWrnUdpjvjyEoLfi9ajKtWbU3fqn0qj/Ie6fjHYtVfabzG2USrSHGJeTwIOuL3eAvLQzy0C8r4SUrMTOQ/aHCBqbnTmbAzNDOOFGEOjBsEGBSGv+sZbf0D+BfMQeFZEWyz6y+WHLM3Sw0hI62Q3/zHe0kKdDn55JvL55GM6z9E4xG/SArAliMjM+asdo+FNlRxz2/w2nrUjxUOZG4duOyJHHwB2I/Q92YHLcn3gEQYBrCQ9FoQvkebfU9xzauDD5mLhF52YLQLonnECES9UE9AoNJ2A0ESpVfFxiajtl7cE5fVsoAqB5cOc3089G3l8GfrgOYKwV1ri3UVpC1mj+wYhvQP4cuwRGPA+StzBMqK0JDAjV04aBUklq1WwN0njNuhVJJlUkrdskBeqEPQ8cUrmiURumT1uVAM89uhWajjNzrn0VxdmkVHlRqz9hbsLsk/oczzbYO7rn38NXcooX/muR0uhKJVmNALJtIaNkp1MlQcBzXjufLg6Qt7r9dfxpDNlyR9hhM+kkunwc+D9A6SRux/0n397tBYKZkEKWGxEOy0Faw1/UscXBj//6NEzt5bC/dRqxOwMgr5RSYXOgnm/mdgcYFWhOdHgtybTklO+Q=
