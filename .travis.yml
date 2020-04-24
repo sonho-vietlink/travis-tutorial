@@ -72,10 +72,10 @@ jobs:
     #   region: ap-southeast-1
     #   on:
     #     branch: all
-    notifications:
-      slack:
-        if: branch = staging
-        secure: NlCztCbxrSuXb8srZmFljE5l0PuQ//36rKhuPANuvR3h3TYl/+HDJ7qoTJCwtjEr6jgS74/0BkHFFQi1Qv5GoJ0dnQRBZ+Ts+s5FFXI2xYXUFbKFroYl0lXADuNgnkF1LJj060PVFNRYgsJd+hzzOd1Oe8+09sZ9mRk015jUafDiu3q23ApvyRYm3p5+DQ3O6Xl3QQVzV2aUZ2vH3iwyoQHx9wpEb8EYk7Qh4x4e4k/6yQR/k4qZyZDlRO+1rQed92KJYTVgPdAK6nPzyluYUwR3rPvCUx2dfcxbI0IuR/rDGTm2wRcsb/OYnBjpFcMTW4RtoP7UKa7he5qcZMEvLF8TFokxfQk8rxFTHzV1CYblMPVG8yshGcLXPfMOMWZcADiTCuGbRYV2mFKApLI0M85Bltu83NhhprSYTfhXSJqGv8SJGhCrSTpvrQeOTjUlRKiZq9a6Zkx7XodwMa4o11poDBAxdi7esszCoIluAJ5++YOt5kEKyxXUBk+9pDWplN0jUQPxpKDhInvobC399cx7Oc3mER4kam2nRbAOE5oHwO2LFD9Np9xXBr/PGBaAHqJ2ECBiQgg6EtKxBoBnL6jpfkHJAgVNhoQncw8IDN+70ecZ091HbX+X7NSb+xj71Waej+NBUEeoyXI0ImFJxv8Dx7vcio1B9XoCaiifIDU=
+    # notifications:
+    #   slack:
+    #     if: branch = staging
+    #     secure: NlCztCbxrSuXb8srZmFljE5l0PuQ//36rKhuPANuvR3h3TYl/+HDJ7qoTJCwtjEr6jgS74/0BkHFFQi1Qv5GoJ0dnQRBZ+Ts+s5FFXI2xYXUFbKFroYl0lXADuNgnkF1LJj060PVFNRYgsJd+hzzOd1Oe8+09sZ9mRk015jUafDiu3q23ApvyRYm3p5+DQ3O6Xl3QQVzV2aUZ2vH3iwyoQHx9wpEb8EYk7Qh4x4e4k/6yQR/k4qZyZDlRO+1rQed92KJYTVgPdAK6nPzyluYUwR3rPvCUx2dfcxbI0IuR/rDGTm2wRcsb/OYnBjpFcMTW4RtoP7UKa7he5qcZMEvLF8TFokxfQk8rxFTHzV1CYblMPVG8yshGcLXPfMOMWZcADiTCuGbRYV2mFKApLI0M85Bltu83NhhprSYTfhXSJqGv8SJGhCrSTpvrQeOTjUlRKiZq9a6Zkx7XodwMa4o11poDBAxdi7esszCoIluAJ5++YOt5kEKyxXUBk+9pDWplN0jUQPxpKDhInvobC399cx7Oc3mER4kam2nRbAOE5oHwO2LFD9Np9xXBr/PGBaAHqJ2ECBiQgg6EtKxBoBnL6jpfkHJAgVNhoQncw8IDN+70ecZ091HbX+X7NSb+xj71Waej+NBUEeoyXI0ImFJxv8Dx7vcio1B9XoCaiifIDU=
   - stage: deploy_prd
     if: tag =~ /^v_/
     env:
